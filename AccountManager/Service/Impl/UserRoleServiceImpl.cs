@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using AccountManager.DB;
 using AccountManager.DB.Entity;
 using Infrastructure;
-using SqlSugar;
 
 namespace AccountManager.Service.Impl
 {
@@ -31,16 +27,16 @@ namespace AccountManager.Service.Impl
             return ResultUtil.CreateResult(result.Data, result.ErrorMessage);
         }
 
-        public List<User> GetByRoleId(string roleId, int pageIndex, int pageSize)
+        public List<User> GetByRoleId(string roleId, int pageIndex = 1, int pageSize = 10)
         {
             DBContext context = new DBContext();
             return context.DB.Queryable<User, UserRole>((u, ur) => u.Id == ur.UserId).Select((u, ur) => u).ToPageList(pageIndex, pageSize);
         }
 
-        public List<Role> GetByUserId(string userId, int pageIndex, int pageSize)
+        public List<Role> GetByUserId(string userId, int pageIndex = 1, int pageSize = 10)
         {
             DBContext context = new DBContext();
-            return context.DB.Queryable<Role, UserRole>((r, ur) => r.Id == ur.RoleId && ur.UserId==userId).Select((r, ur) => r).ToPageList(pageIndex, pageSize);
+            return context.DB.Queryable<Role, UserRole>((r, ur) => r.Id == ur.RoleId && ur.UserId == userId).OrderBy((r, ur) => r.RoleLevel).Select((r, ur) => r).ToPageList(pageIndex, pageSize);
         }
     }
 }

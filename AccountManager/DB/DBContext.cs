@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using AccountManager.DB.Entity;
 using Infrastructure;
 using log4net;
@@ -100,6 +99,6 @@ namespace AccountManager.DB
             return ResultUtil.CreateResult<int>(result.Data, result.ErrorMessage);
 
         }
-        
+
     }
 }

@@ -256,12 +256,15 @@
     <Compile Include="DB\Entity\RoleRight.cs" />
     <Compile Include="DB\Entity\User.cs" />
     <Compile Include="DB\Entity\UserRole.cs" />
+    <Compile Include="Filter\JWTAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserRole.cs" />
+    <Compile Include="Models\LoginInfoMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IAccountService.cs" />
     <Compile Include="Service\IBaseService.cs" />
+    <Compile Include="Service\Impl\AccountServiceImpl.cs" />
     <Compile Include="Service\Impl\BaseServiceImpl.cs" />
     <Compile Include="Service\Impl\RightServiceImpl.cs" />
     <Compile Include="Service\Impl\RoleRightServiceImpl.cs" />
@@ -328,7 +331,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Infrustraction\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using AccountManager.DB.Entity;
@@ -37,7 +33,7 @@ namespace AccountManager.Controllers
             var result = ResultUtil.AddNotNullData(data, ConstInfo.ERR_NotFound_User);
             return Ok(result);
         }
-        
+
         public IHttpActionResult Post([FromBody]User user)
         {
             if (user == null)
@@ -84,9 +80,9 @@ namespace AccountManager.Controllers
             }
             else
             {
-                model =await Service.GetByIdAsync(id);
+                model = await Service.GetByIdAsync(id);
             }
-            if (model==null)
+            if (model == null)
             {
                 return Ok(ResultUtil.CreateResult<int>(ERR_NotFound_User));
             }

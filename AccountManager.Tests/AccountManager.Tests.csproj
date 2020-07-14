@@ -160,6 +160,7 @@
     <Compile Include="Controllers\UserControllerTests.cs" />
     <Compile Include="Controllers\UserRoleControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Impl\AccountServiceImplTests.cs" />
     <Compile Include="Service\Impl\RoleRightServiceImplTests.cs" />
     <Compile Include="Service\Impl\RoleServiceImplTests.cs" />
     <Compile Include="Service\Impl\UserServiceImplTests.cs" />

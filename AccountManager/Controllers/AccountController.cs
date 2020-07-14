@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
+using AccountManager.Models;
 using AccountManager.Service;
 using Unity;
 
 namespace AccountManager.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : ApiController
     {
         [Dependency]
-        public IUserService Service { get; set; }
-        [HttpGet]
-        public IHttpActionResult Login(string nickName, string password)
+        public IAccountService Service { get; set; }
+        [HttpPost]
+        public IHttpActionResult Login([FromBody]LoginInfoMode info)
         {
-            return Ok(Service.GetByNamePassw(nickName, password));
+            if (long.TryParse(info.Name, out long _))
+            {
+                return Ok(Service.LoginByPhoneNum(info.Name, info.Password));
+            }
+            return Ok(Service.LoginByNickName(info.Name, info.Password));
         }
     }
 }

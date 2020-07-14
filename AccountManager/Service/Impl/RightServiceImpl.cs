@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
-using System.Web;
 using AccountManager.DB;
 using AccountManager.DB.Entity;
 using Infrastructure;
@@ -14,7 +11,7 @@ namespace AccountManager.Service.Impl
         public List<Right> GetByTitle(string title, int pageIndex, int pageSize)
         {
             DBContext context = new DBContext();
-            return context.RightDB.AsQueryable().Where(x=>x.Title.Contains(title)).ToPageList(pageIndex,pageSize);
+            return context.RightDB.AsQueryable().Where(x => x.Title.Contains(title)).ToPageList(pageIndex, pageSize);
         }
 
         public Result<int> UpdateById(string id, Right value)

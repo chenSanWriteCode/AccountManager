@@ -46,6 +46,8 @@ namespace AccountManager
             container.RegisterType<IUserRoleService, UserRoleServiceImpl>();
             container.RegisterType<IRoleRightService, RoleRightServiceImpl>();
             container.RegisterType<IRightService, RightServiceImpl>();
+            container.RegisterSingleton<IAccountService, AccountServiceImpl>();
+
         }
     }
 }

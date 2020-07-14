@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 using AccountManager.DB.Entity;
@@ -44,8 +40,8 @@ namespace AccountManager.Controllers
             {
                 return Ok(ResultUtil.CreateResult<int>(ERR_Null));
             }
-            var data = Service.GetByTitle(value.Title,1,1000);
-            if (data.Count>0)
+            var data = Service.GetByTitle(value.Title, 1, 1000);
+            if (data.Count > 0)
             {
                 return Ok(ResultUtil.CreateResult<int>(ERR_AlreadyHave_Right));
             }
@@ -61,13 +57,13 @@ namespace AccountManager.Controllers
             {
                 return Ok(ResultUtil.CreateResult<int>(ERR_NotFound));
             }
-           
+
             var data = Service.GetByTitle(value?.Title, 1, 1000);
-            if (data.Count>0)
+            if (data.Count > 0)
             {
                 return Ok(ResultUtil.CreateResult<int>(ERR_AlreadyHave_Right));
             }
-            
+
             //传入修改的value！=null
             if (value == null)
             {
@@ -88,7 +84,7 @@ namespace AccountManager.Controllers
             {
                 return Ok(ResultUtil.CreateResult<int>(result.Message));
             }
-            
+
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
+﻿using System.Text;
 using AccountManager.DB;
 using AccountManager.DB.Entity;
 using Infrastructure;
@@ -34,7 +30,13 @@ namespace AccountManager.Service.Impl
             return context.UserDB.GetSingle(x => x.PhoneNum.Substring(x.PhoneNum.Length - length, length) == phoneNum);
         }
 
-        public  Result<int> Update(string phoneNumOrId, User model)
+        public User GetByPhoneNum(string phoneNum, string password)
+        {
+            DBContext context = new DBContext();
+            return context.UserDB.GetSingle(x => x.PhoneNum == phoneNum && x.Password == password);
+        }
+
+        public Result<int> Update(string phoneNumOrId, User model)
         {
             StringBuilder sql = new StringBuilder($"update web_user set lastupdateby = '{model.LastUpdateBy}',");
             if (!string.IsNullOrEmpty(model.NickName))
@@ -57,7 +59,7 @@ namespace AccountManager.Service.Impl
             {
                 sql.Append($" VIPLevel={model.VIPLevel.Value},");
             }
-            sql.Remove(sql.Length-1, 1);
+            sql.Remove(sql.Length - 1, 1);
             if (long.TryParse(phoneNumOrId, out _))
             {
                 sql.Append($" where phonenum='{phoneNumOrId}'");

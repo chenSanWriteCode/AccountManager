@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using AccountManager.DB.Entity;
+﻿using AccountManager.DB.Entity;
 using Infrastructure;
 
 namespace AccountManager.Service
@@ -10,6 +6,7 @@ namespace AccountManager.Service
     public interface IUserService : IBaseService<User>
     {
         User GetByPhoneNum(string phoneNum);
+        User GetByPhoneNum(string phoneNum, string password);
 
         User GetByNamePassw(string name, string password);
 

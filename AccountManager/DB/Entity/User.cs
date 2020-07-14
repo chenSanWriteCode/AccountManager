@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-using SqlSugar;
+﻿using SqlSugar;
 namespace AccountManager.DB.Entity
 {
     [SugarTable("Web_User")]
     public class User : BaseEntity
     {
-        [SugarColumn(IsNullable =true)]
+        [SugarColumn(IsNullable = true)]
         public string UserName { get; set; }
         [SugarColumn(IsNullable = true)]
         public string NickName { get; set; }
@@ -21,7 +16,7 @@ namespace AccountManager.DB.Entity
 
         [SugarColumn(IsNullable = true)]
         public int? VIPLevel { get; set; } = 1;
-       
-       
+
+
     }
 }
